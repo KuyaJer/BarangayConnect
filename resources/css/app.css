@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Keyframes ──────────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1);    }
+}
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-12px); }
+    to   { opacity: 1; transform: translateX(0);     }
+}
+@keyframes pulseDot {
+    0%, 100% { transform: scale(1);    opacity: 1;   }
+    50%       { transform: scale(1.5); opacity: 0.6; }
+}
+
+/* ── Animation utilities ────────────────────────────────────────────── */
+.animate-fade-in-up    { animation: fadeInUp    0.4s  ease both; }
+.animate-fade-in       { animation: fadeIn      0.3s  ease both; }
+.animate-scale-in      { animation: scaleIn     0.25s ease both; }
+.animate-slide-in-left { animation: slideInLeft 0.3s  ease both; }
+
+/* ── Page-level entrance (applied to <main>) ────────────────────────── */
+.page-enter { animation: fadeIn 0.3s ease both; }
+
+/* ── Stagger children (add class to any grid/list wrapper) ──────────── */
+.stagger > *             { opacity: 0; animation: fadeInUp 0.4s ease forwards; }
+.stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger > *:nth-child(2) { animation-delay: 0.12s; }
+.stagger > *:nth-child(3) { animation-delay: 0.19s; }
+.stagger > *:nth-child(4) { animation-delay: 0.26s; }
+.stagger > *:nth-child(5) { animation-delay: 0.33s; }
+.stagger > *:nth-child(6) { animation-delay: 0.40s; }
+.stagger > *:nth-child(7) { animation-delay: 0.47s; }
+.stagger > *:nth-child(8) { animation-delay: 0.54s; }
+.stagger > *:nth-child(n+9) { animation-delay: 0.60s; }
+
+/* ── Notification badge pulse ───────────────────────────────────────── */
+.badge-pulse { animation: pulseDot 2s ease-in-out infinite; }
+
+/* ── Sidebar nav link hover slide ───────────────────────────────────── */
+.nav-link { transition: transform 0.2s ease, background-color 0.15s ease, color 0.15s ease; }
+.nav-link:hover { transform: translateX(4px); }
+
+/* ── Button press feedback ──────────────────────────────────────────── */
+button:not([disabled]):active { transform: scale(0.97); transition: transform 0.08s ease; }
+
+/* ── Card hover lift ────────────────────────────────────────────────── */
+.card-hover {
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px -5px rgb(0 0 0 / 0.12), 0 4px 12px -3px rgb(0 0 0 / 0.06);
+}
