@@ -200,7 +200,7 @@
                 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
                     Assign To
                 </label>
-                <input type="text" name="assign_to" x-model="currentAssignTo"
+                <input type="text" name="assigned_to" x-model="currentAssignTo"
                        placeholder="Staff name or ID (optional)"
                        class="w-full rounded-lg border border-gray-300 dark:border-gray-600
                               bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100

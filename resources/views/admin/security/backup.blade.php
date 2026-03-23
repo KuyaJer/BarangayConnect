@@ -77,50 +77,48 @@
                 </p>
 
                 <form method="POST" action="{{ route('admin.security.backup.restore') }}"
-                      enctype="multipart/form-data" x-show="!confirm">
+                      enctype="multipart/form-data">
                     @csrf
-                    <div class="mb-3">
-                        <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">SQL File</label>
-                        <input type="file" name="sql_file" accept=".sql,.txt"
-                               class="w-full text-xs text-gray-700 dark:text-gray-300
-                                      file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0
-                                      file:text-xs file:font-medium file:bg-indigo-50 file:text-indigo-700
-                                      dark:file:bg-indigo-900/30 dark:file:text-indigo-300
-                                      hover:file:bg-indigo-100 dark:hover:file:bg-indigo-900/50"/>
-                    </div>
-                    <button type="button" @click="confirm = true"
-                            class="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg
-                                   bg-red-600 hover:bg-red-700 text-white transition-colors">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
-                        </svg>
-                        Restore Database
-                    </button>
-                </form>
 
-                {{-- Confirm step --}}
-                <div x-show="confirm" x-transition>
-                    <p class="text-sm font-medium text-red-600 dark:text-red-400 mb-3">
-                        Are you sure? This will replace all current data with the backup file.
-                    </p>
-                    <div class="flex gap-2">
-                        <form method="POST" action="{{ route('admin.security.backup.restore') }}"
-                              enctype="multipart/form-data" class="flex-1">
-                            @csrf
-                            <input type="file" name="sql_file" accept=".sql,.txt" class="hidden" id="restore-confirm-file"/>
-                            <button type="submit"
-                                    class="w-full px-3 py-2 text-sm font-medium rounded-lg bg-red-600 hover:bg-red-700 text-white transition-colors">
-                                Yes, Restore
-                            </button>
-                        </form>
-                        <button @click="confirm = false"
-                                class="flex-1 px-3 py-2 text-sm font-medium rounded-lg border border-gray-300 dark:border-gray-600
-                                       text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                            Cancel
+                    <div x-show="!confirm">
+                        <div class="mb-3">
+                            <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">SQL File</label>
+                            <input type="file" name="sql_file" accept=".sql,.txt"
+                                   class="w-full text-xs text-gray-700 dark:text-gray-300
+                                          file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0
+                                          file:text-xs file:font-medium file:bg-indigo-50 file:text-indigo-700
+                                          dark:file:bg-indigo-900/30 dark:file:text-indigo-300
+                                          hover:file:bg-indigo-100 dark:hover:file:bg-indigo-900/50"/>
+                        </div>
+                        <button type="button" @click="confirm = true"
+                                class="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg
+                                       bg-red-600 hover:bg-red-700 text-white transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                            </svg>
+                            Restore Database
                         </button>
                     </div>
-                </div>
+
+                    {{-- Confirm step --}}
+                    <div x-show="confirm" x-transition>
+                        <p class="text-sm font-medium text-red-600 dark:text-red-400 mb-3">
+                            Are you sure? This will replace all current data with the backup file.
+                        </p>
+                        <div class="flex gap-2">
+                            <button type="submit"
+                                    class="flex-1 px-3 py-2 text-sm font-medium rounded-lg bg-red-600 hover:bg-red-700 text-white transition-colors">
+                                Yes, Restore
+                            </button>
+                            <button type="button" @click="confirm = false"
+                                    class="flex-1 px-3 py-2 text-sm font-medium rounded-lg border border-gray-300 dark:border-gray-600
+                                           text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
 
         </div>
